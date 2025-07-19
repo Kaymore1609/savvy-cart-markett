@@ -28,6 +28,7 @@ interface ShippingAddress {
   state: string;
   postalCode: string;
   country: string;
+  [key: string]: any;
 }
 
 export default function Checkout() {

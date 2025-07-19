@@ -27,8 +27,9 @@ interface Product {
 
 interface Order {
   id: string;
+  user_id: string;
   total_amount: number;
-  status: string;
+  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
   created_at: string;
   profiles: {
     full_name: string;
@@ -123,12 +124,10 @@ export default function Admin() {
         .from('orders')
         .select(`
           id,
+          user_id,
           total_amount,
           status,
           created_at,
-          profiles (
-            full_name
-          ),
           order_items (
             id,
             quantity,
@@ -140,7 +139,24 @@ export default function Admin() {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setOrders(data || []);
+      
+      // Fetch user profiles separately
+      const ordersWithProfiles = await Promise.all(
+        (data || []).map(async (order) => {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('full_name')
+            .eq('id', order.user_id)
+            .single();
+          
+          return {
+            ...order,
+            profiles: profile || { full_name: 'Unknown User' }
+          };
+        })
+      );
+      
+      setOrders(ordersWithProfiles);
     } catch (error) {
       console.error('Error fetching orders:', error);
     }
@@ -229,7 +245,7 @@ export default function Admin() {
     }
   };
 
-  const handleUpdateOrderStatus = async (orderId: string, newStatus: string) => {
+  const handleUpdateOrderStatus = async (orderId: string, newStatus: "pending" | "processing" | "shipped" | "delivered" | "cancelled") => {
     try {
       const { error } = await supabase
         .from('orders')
@@ -470,7 +486,7 @@ export default function Admin() {
                             <p className="font-bold text-primary">${order.total_amount.toFixed(2)}</p>
                             <Select
                               value={order.status}
-                              onValueChange={(value) => handleUpdateOrderStatus(order.id, value)}
+                              onValueChange={(value) => handleUpdateOrderStatus(order.id, value as "pending" | "processing" | "shipped" | "delivered" | "cancelled")}
                             >
                               <SelectTrigger className="w-32 mt-2">
                                 <SelectValue />

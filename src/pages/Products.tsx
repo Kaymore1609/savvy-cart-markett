@@ -7,7 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, Filter } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
-import { supabase } from "@/integrations/supabase/client";
 
 interface Product {
   id: string;
@@ -53,11 +52,11 @@ export default function Products() {
 
   const fetchProducts = async () => {
     try {
-      const { data, error } = await supabase
-        .from('products')
-        .select('*');
-      
-      if (error) throw error;
+      const response = await fetch("http://localhost:5000/api/products");
+      if (!response.ok) {
+        throw new Error("Failed to fetch products");
+      }
+      const data = await response.json();
       setProducts(data || []);
     } catch (error) {
       console.error('Error fetching products:', error);

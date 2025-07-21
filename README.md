@@ -1,73 +1,35 @@
-# Welcome to your Lovable project
+# Savvy Cart Market
 
-## Project info
+Welcome to **Savvy Cart Market** — a sleek, modern e-commerce platform built with React, TypeScript, and powered by Supabase. This project showcases a fully functional product catalog with advanced search, filtering, and sorting capabilities, designed for performance and great user experience.
 
-**URL**: https://lovable.dev/projects/c6a15190-84a4-4c61-b1da-5b0b8acc785a
+---
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+- **Dynamic product listing** with real-time search, category filtering, and sorting options
+- Detailed **product pages** showing all essential information and stock status
+- Clean, responsive UI built with Tailwind CSS and reusable components
+- Integration with **Supabase** for backend database management and authentication
+- Optional Express.js backend for API routing and business logic
+- Easy deployment and development using Vite
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c6a15190-84a4-4c61-b1da-5b0b8acc785a) and start prompting
+## 🛠️ Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend:** React + TypeScript, Tailwind CSS, React Router
+- **Backend:** Node.js + Express (optional)
+- **Database:** Supabase (PostgreSQL)
+- **Tools:** Vite, dotenv, npm/yarn
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## ⚙️ Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Frontend Setup
 
-Follow these steps:
+1. Clone the frontend repository:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/c6a15190-84a4-4c61-b1da-5b0b8acc785a) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+```bash
+git clone https://github.com/Kaymore1609/savvy-cart-market.git
+cd savvy-cart-market
